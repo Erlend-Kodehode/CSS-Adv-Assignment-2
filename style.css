@@ -5,7 +5,6 @@
 }
 
 body {
-  /* background-color: gray; */
   display: flex;
   justify-content: center;
 }
@@ -15,10 +14,12 @@ body {
   --animYLength: 187px;
   --animXOffset: 37px;
   --animYOffset: -12px;
-  --backgroundColor: black;
+  --animSpeed: 3s;
+  --screenColor: black;
   --dotSize: 25px;
   --circleSize: 50px;
 }
+
 #cabinet {
   display: flex;
   flex-direction: column;
@@ -28,8 +29,9 @@ body {
   padding: 25px;
   gap: 10px;
 }
+
 #game {
-  background-color: var(--backgroundColor);
+  background-color: var(--screenColor);
   display: flex;
   padding: 40px;
   justify-content: center;
@@ -41,88 +43,9 @@ body {
   background-color: yellow;
   position: relative;
   border-radius: 50%;
-  animation: circle 3s linear 0s infinite normal;
+  animation: circle var(--animSpeed) linear 0s infinite normal;
   z-index: 2;
   flex-shrink: 0;
-}
-
-#triangle {
-  width: 0px;
-  height: 0px;
-  border-top: 0px solid transparent;
-  border-bottom: 0px solid transparent;
-  border-left: 25px solid var(--backgroundColor);
-  position: absolute;
-  top: 25px;
-  border-radius: 0%;
-  animation: triangle 0.15s linear 0s infinite alternate;
-  z-index: 3;
-}
-
-.dot {
-  height: var(--dotSize);
-  width: var(--dotSize);
-  background-color: yellow;
-  border-radius: 50%;
-}
-
-.spacer {
-  height: var(--dotSize);
-  width: 125px;
-}
-
-#grid {
-  align-content: start;
-  display: flex;
-  flex-wrap: wrap;
-  width: 250px;
-  gap: 25px;
-  flex-shrink: 0;
-}
-#container {
-  height: var(--circleSize);
-  width: var(--circleSize);
-}
-.blocker {
-  background-color: var(--backgroundColor);
-  position: relative;
-  right: 250px;
-  z-index: 1;
-  animation: blocker-extend 3s linear 0s infinite;
-  flex-shrink: 0;
-}
-
-@keyframes blocker-extend {
-  0% {
-    height: 26px;
-    width: 225px;
-  }
-  25% {
-    height: 226px;
-    top: 0px;
-    width: 26px;
-  }
-
-  50% {
-    width: 230px;
-    top: 200px;
-    right: 250px;
-    height: 26px;
-  }
-
-  75% {
-    top: 0px;
-    width: 30px;
-    right: 50px;
-    height: 226px;
-  }
-
-  100% {
-    height: 26px;
-    right: 250px;
-    width: 225px;
-    top: 0px;
-  }
 }
 
 @keyframes circle {
@@ -167,6 +90,19 @@ body {
   }
 }
 
+#triangle {
+  width: 0px;
+  height: 0px;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-left: 25px solid var(--screenColor);
+  position: absolute;
+  top: 25px;
+  border-radius: 0%;
+  animation: triangle 0.15s linear 0s infinite alternate;
+  z-index: 3;
+}
+
 @keyframes triangle {
   from {
     border-top: 0px solid transparent;
@@ -179,6 +115,74 @@ body {
     border-bottom: 15px solid transparent;
     top: 10px;
     border-radius: 30%;
+  }
+}
+
+.dot {
+  height: var(--dotSize);
+  width: var(--dotSize);
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.spacer {
+  height: var(--dotSize);
+  width: 125px;
+}
+
+#grid {
+  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  gap: 25px;
+  flex-shrink: 0;
+}
+
+#container {
+  height: var(--circleSize);
+  width: var(--circleSize);
+}
+
+.blocker {
+  background-color: var(--screenColor);
+  position: relative;
+  right: 250px;
+  z-index: 1;
+  animation: blocker-extend var(--animSpeed) linear 0s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blocker-extend {
+  0% {
+    height: 26px;
+    width: 225px;
+  }
+  25% {
+    height: 226px;
+    top: 0px;
+    width: 26px;
+  }
+
+  50% {
+    width: 230px;
+    top: 200px;
+    right: 250px;
+    height: 26px;
+  }
+
+  75% {
+    top: 0px;
+    width: 30px;
+    right: 50px;
+    height: 226px;
+  }
+
+  100% {
+    height: 26px;
+    right: 250px;
+    width: 225px;
+    top: 0px;
   }
 }
 
